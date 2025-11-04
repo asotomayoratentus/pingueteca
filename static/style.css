@@ -1,0 +1,209 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background: #003366;
+    color: white;
+    padding: 10px 20px;
+}
+
+.logo img {
+    height: 110px;
+}
+
+.titulo {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.h1_title-page {
+    font-size: 3.5em;
+    margin-bottom: 0;
+    font-family: "Dancing Script", cursive;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.h2_subtitle-page {
+    font-size: 1.2em;
+    margin-top: 5px;
+    font-weight: normal;
+}
+
+.buscador {
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.buscador-text-input-container {
+    padding: 2px;
+    border-radius: 20px;
+    background-color: white;
+    display: flex;
+}
+
+input.input-text {
+    height: 30px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border: none;
+    width: 400px;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+select.input-select {
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    width: 300px;
+    cursor: pointer;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+select {
+  -webkit-appearance: none; /* For Chrome, Safari, and Opera */
+  -moz-appearance: none;    /* For Firefox */
+  appearance: none;         /* Standard property */
+}
+
+.custom-select-wrapper {
+    position: relative;
+    display: inline-block; /* Or block, depending on layout */
+}
+
+.custom-select-wrapper::after {
+    content: '▼'; /* Or an SVG icon, or a character like '&#9660;' */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none; /* Ensures the select element is still clickable */
+    color: black;
+}
+
+select.input-select:focus {
+    outline: none;
+}
+
+input.input-text:focus {
+    outline: none;
+}
+
+button.search-button {
+    border: none;
+    border-radius: 20px;
+    background-color: grey;
+    color: white;
+    cursor: pointer;
+    width: 60px;
+    height: 40px;
+}
+
+.buscador input {
+    padding: 5px;
+    font-size: 1em;
+}
+
+.filtro select {
+    padding: 5px;
+    font-size: 1em;
+}
+
+.destacado {
+    display: flex;
+    background: #fff;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.portada img {
+    width: 150px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.detalle {
+    margin-left: 20px;
+    flex: 1;
+}
+
+.resultados {
+    margin: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #003366;
+    color: white;
+}
+
+.books-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.book-card {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.book-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-us-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.about-section {
+    background-color: #ffffff;
+    margin: 40px auto;
+    padding: 30px;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.about-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+    font-family: "Dancing Script", cursive;
+    color: #003366;
+}
+
+.about-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.about-list li {
+    font-size: 1.2em;
+    margin: 10px 0;
+    padding: 8px;
+    background-color: #f0f8ff;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.about-list li:hover {
+    background-color: #e0ecff;
+}

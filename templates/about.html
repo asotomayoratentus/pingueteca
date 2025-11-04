@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Pingüeteca</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+    </style>
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('index') }}">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo Colegio">
+            </div>
+        </a>
+        <div class="titulo">
+            <h1 class="h1_title-page">Pingüiteca</h1>
+            <h2 class="h2_subtitle-page">Colegio Antártica Chilena</h2>
+        </div>
+        <form method="get" class="buscador">
+            <div class="buscador-text-input-container">
+                <input type="text" name="q" placeholder="Buscar libros..." class="input-text">
+                <button type="submit" class="search-button">
+                    Buscar
+                </button>
+            </div>
+        </form>
+        <div class="filtro">
+            <form method="get">
+                <div class="custom-select-wrapper">
+                <select name="filtro" onchange="this.form.submit()" class="input-select">
+                    <option value="">Categorías...</option>
+                    <option value="Ciencia Ficción">Ciencia Ficción</option>
+                    <option value="Suspenso">Suspenso</option>
+                    <option value="Novela">Novela</option>
+                    <option value="Religioso">Religioso</option>
+                    <option value="Tragedia">Tragedia</option>
+                    <option value="Ficción">Ficción</option>
+                    <option value="Literatura infantil">Literatura infantil</option>
+                    <!-- Agrega más géneros si quieres -->
+                </select>
+                </div>
+            </form>
+        </div>
+    </header>
+
+<main>
+  <section class="about-section">
+    <h3 class="about-title">Acerca de nosotros...</h3>
+    <ul class="about-list">
+      <li>Fernanda Sotomayor</li>
+      <li>Antonia Flores</li>
+      <li>Antonia Almarza</li>
+      <li>Iván González</li>
+      <li>Andrea Velásquez</li>
+    </ul>
+  </section>
+</main>
+
+    <footer>
+        <p>© Pingüiteca - Proyecto escolar 2025</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Pingüeteca</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo Colegio">
+            </a>
+        </div>
+        <div class="titulo">
+            <h1 class="h1_title-page">Pingüeteca</h1>
+            <h2 class="h2_subtitle-page">Colegio Antártica Chilena</h2>
+        </div>
+        <form method="get" class="buscador">
+            <div class="buscador-text-input-container">
+                <input type="text" name="q" placeholder="Buscar libros..." class="input-text">
+                <button type="submit" class="search-button">
+                    Buscar
+                </button>
+            </div>
+        </form>
+        <div class="filtro">
+            <form method="get">
+                <div class="custom-select-wrapper">
+                <select name="filtro" onchange="this.form.submit()" class="input-select">
+                    <option value="">Categorías...</option>
+                    <option value="Ciencia Ficción">Ciencia Ficción</option>
+                    <option value="Suspenso">Suspenso</option>
+                    <option value="Novela">Novela</option>
+                    <option value="Religioso">Religioso</option>
+                    <option value="Tragedia">Tragedia</option>
+                    <option value="Ficción">Ficción</option>
+                    <option value="Literatura infantil">Literatura infantil</option>
+                    <!-- Agrega más géneros si quieres -->
+                </select>
+                </div>
+            </form>
+        </div>
+    </header>
+
+    <main>
+        {% if request.args.get('q') %}
+        {% set libro = None %}
+        {% endif %}
+        {% if request.args.get('filtro') %}
+        {% set libro = None %}
+        {% endif %}
+        {% if libro %}
+        <section class="destacado">
+            <div class="portada">
+                <img src="{{ url_for('static', filename=libro['portada_path']) if libro['portada_path'] else url_for('static', filename='img/libro-generico.png') }}" alt="Portada"  height="150px">
+            </div>
+            <div class="detalle">
+                <h2>{{ libro['titulo'] }}</h2>
+                <h3>{{ libro['autor'] }}</h3>
+                <p id="descripcion">
+                    {{ libro['descripcion'][:200] }}...
+                    <span id="mas" style="display:none;">{{ libro['descripcion'][200:] }}</span>
+                    <a href="#" onclick="document.getElementById('mas').style.display='inline'; this.style.display='none'; return false;">Ver más</a>
+                </p>
+            </div>
+        </section>
+        {% endif %}
+
+        {% if resultados %}
+        <section class="resultados">
+            {% if request.args.get('q') %}
+            <h2>Resultados para la búsqueda "{{ request.args.get('q') }}"</h2>
+            {% elif request.args.get('filtro') %}
+            <h2>Resultados para la categoría "{{ request.args.get('filtro') }}"</h2>
+            {% else %}
+            <h2>Libros disponibles</h2>
+            {% endif %}
+            <div class="books-container">
+                {% for r in resultados %}
+                    <div class="book-card">
+                        <div class="book-image-container">
+                            <img src="{{ url_for('static', filename=r['portada_path']) if r['portada_path'] else url_for('static', filename='img/libro-generico.png') }}" alt="Portada" height="120px"></div>
+                        <h3>{{ r['titulo'] }}</h3>
+                        <p><strong>Autor:</strong> {{ r['autor'] }}</p>
+                        <p><strong>Disponible:</strong> {{ r['cantidad_disponible'] }} / {{ r['cantidad'] }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+    </main>
+
+    <footer>
+        <div>
+            <a class="about-us-link" href="{{ url_for('about') }}">Sobre nosotros</a>
+        </div>
+        <p>© Pingüiteca - Proyecto escolar 2025</p>
+    </footer>
+</body>
+</html>
